@@ -6,9 +6,15 @@ jobs:
     name: Build the iso
     runs-on: ubuntu-latest
     steps:
+      - uses: RangHo/setup-arch@main
+        with:
+          version: latest
+          mirror: https://geo.mirror.pkgbuild.com
+          packages: ""
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Build
+        shell: arch.sh {0}
         run: sudo ./archiso/mkarchiso -w ./work-dir -o ./out_dir ./configs/releng
 
       - name: Upload-artifact
