@@ -9,7 +9,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Build
-        run: ./archiso/mkarchiso -w ./work-dir -o ./out_dir ./configs/releng
+        run: sudo ./archiso/mkarchiso -w ./work-dir -o ./out_dir ./configs/releng
 
       - name: Upload-artifact
         uses: actions/upload-artifact@v4
