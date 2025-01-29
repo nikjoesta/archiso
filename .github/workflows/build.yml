@@ -10,9 +10,12 @@ jobs:
         with:
           version: latest
           mirror: https://geo.mirror.pkgbuild.com
-          packages: "arch-install-scripts awk dosfstools e2fsprogs erofs-utils findutils grub gzip libarchive libisoburn mtools openssl pacman sed squashfs-tools"
+          packages: "arch-install-scripts archiso awk dosfstools e2fsprogs erofs-utils findutils grub gzip libarchive libisoburn mtools openssl pacman sed squashfs-tools tree"
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: Perform a Pester test from the command-line
+      - name: Show releaseinfo
         shell: arch.sh {0}
         run: cat /etc/os-release
+      - name: List content
+        shell: arch.sh {0}
+        run: tree .
