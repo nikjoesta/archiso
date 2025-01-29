@@ -13,7 +13,7 @@ jobs:
           packages: ""
       - name: Install packages
         shell: arch.sh {0}
-        run: sudo pacman -Sy mtools dosfstools grub squashfs-tools
+        run: sudo pacman --noconfirm -Sy mtools dosfstools grub squashfs-tools
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Build
