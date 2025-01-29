@@ -13,12 +13,12 @@ jobs:
           packages: ""
       - name: Install packages
         shell: arch.sh {0}
-        run: sudo pacman --noconfirm -Sy mtools dosfstools grub squashfs-tools
+        run: sudo pacman --noconfirm -Sy archiso mtools dosfstools grub squashfs-tools
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Build
         shell: arch.sh {0}
-        run: sudo ./archiso/mkarchiso -v -w ./work-dir -o ./out_dir ./configs/releng
+        run: sudo mkarchiso -v -w ./work-dir -o ./out_dir ./configs/releng
 
       - name: Upload-artifact
         uses: actions/upload-artifact@v4
