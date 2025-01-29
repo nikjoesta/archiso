@@ -18,7 +18,7 @@ jobs:
         uses: actions/checkout@v4
       - name: Build
         shell: arch.sh {0}
-        run: sudo ./archiso/mkarchiso -w ./work-dir -o ./out_dir ./configs/releng
+        run: sudo ./archiso/mkarchiso -v -w ./work-dir -o ./out_dir ./configs/releng
 
       - name: Upload-artifact
         uses: actions/upload-artifact@v4
