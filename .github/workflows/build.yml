@@ -6,16 +6,13 @@ jobs:
     name: Build the iso
     runs-on: ubuntu-latest
     steps:
-      - uses: RangHo/setup-arch@main
-        with:
-          version: latest
-          mirror: https://geo.mirror.pkgbuild.com
-          packages: "arch-install-scripts archiso awk dosfstools e2fsprogs erofs-utils findutils grub gzip libarchive libisoburn mtools openssl pacman sed squashfs-tools tree"
       - name: Check out repository code
         uses: actions/checkout@v4
-      - name: Show releaseinfo
-        shell: arch.sh {0}
-        run: cat /etc/os-release
-      - name: List content
-        shell: arch.sh {0}
-        run: tree .
+      - name: Build
+        run: ./archiso/mkarchiso -w ./work-dir -o ./out_dir ./configs/releng
+
+      - name: Upload-artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: Iso
+          path: ./out_dir/*.iso
